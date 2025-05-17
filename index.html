@@ -3,18 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status Formulir</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Minisite Pelaporan Rutan Pemalang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body {
+            background-color: #d9dde3;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .divider {
+            border-bottom: 2px solid #888;
+            margin: 20px 0;
+        }
+    </style>
 </head>
-<body>
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup()">&times;</span>
-            <h2 id="status-title">Status Form</h2>
-            <p id="status-message">Memeriksa status form...</p>
+<body class="flex flex-col items-center p-6">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Emblem_of_the_Ministry_of_Law_and_Human_Rights_of_Indonesia.svg/2048px-Emblem_of_the_Ministry_of_Law_and_Human_Rights_of_Indonesia.svg.png" alt="Logo" class="w-32 mb-4">
+    <h1 class="text-3xl font-bold">RUTAN KELAS IIB PEMALANG</h1>
+    <h2 class="text-lg font-semibold mb-4">MINI SITE LINK PELAPORAN RUTAN PEMALANG</h2>
+    <div class="divider"></div>
+    
+    <!-- Card 1 -->
+    <div class="card w-full max-w-lg flex flex-col items-center">
+        <div class="flex items-center mb-4">
+            <span class="text-2xl mr-2"><i data-feather="book"></i></span>
+            <h3 class="text-xl font-semibold">PENGUMPULAN JURNAL HARIAN MANUAL (MEI 2025)</h3>
         </div>
+        <div id="timer1" class="text-4xl font-bold">00 : 00 : 00 : 00</div>
+        <div class="text-sm text-gray-600">Days Hours Minutes Seconds</div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="divider"></div>
+
+    <!-- Card 2 -->
+    <div class="card w-full max-w-lg flex flex-col items-center">
+        <div class="flex items-center mb-4">
+            <span class="text-2xl mr-2"><i data-feather="alert-triangle"></i></span>
+            <h3 class="text-xl font-semibold">PEMENUHAN DADUK ZI - 2025</h3>
+        </div>
+        <div id="timer2" class="text-4xl font-bold">222 : 17 : 33 : 58</div>
+        <div class="text-sm text-gray-600">Days Hours Minutes Seconds</div>
+    </div>
+
+    <div class="divider"></div>
+    
+    <script>
+        feather.replace();
+        // Timer 1 (Pengumpulan Jurnal)
+        const deadline1 = new Date('May 31, 2025 23:59:59').getTime();
+        const timer1 = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = deadline1 - now;
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            document.getElementById("timer1").textContent = `${days} : ${hours} : ${minutes} : ${seconds}`;
+        }, 1000);
+
+        // Timer 2 (Pemenuhan Daduk ZI)
+        const deadline2 = new Date('Dec 31, 2025 23:59:59').getTime();
+        const timer2 = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = deadline2 - now;
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            document.getElementById("timer2").textContent = `${days} : ${hours} : ${minutes} : ${seconds}`;
+        }, 1000);
+    </script>
 </body>
 </html>
